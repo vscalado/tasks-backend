@@ -36,8 +36,10 @@ pipeline{
         }
         stage('API Tests') {
             steps{
-                git credentialsId: 'loginGithub', url: 'https://github.com/vscalado/tasks-api-rest'
-                bat 'mvn test'
+                dir('api-test') {
+                    git credentialsId: 'loginGithub', url: 'https://github.com/vscalado/tasks-api-rest'
+                    bat 'mvn test'
+                }
             }
         }
     }
