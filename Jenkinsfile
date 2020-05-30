@@ -51,5 +51,13 @@ pipeline{
                 }
             }
         }
+        stage('Functional Tests') {
+            steps{
+                dir('functional-test') {
+                    git credentialsId: 'loginGithub', url: 'https://github.com/vscalado/tasks-functional-tests'
+                    bat 'mvn test'
+                }
+            }
+        }       
     }
 }
