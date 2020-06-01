@@ -76,8 +76,15 @@ pipeline{
         }       
     }
     post {
-        always{
+        always {
             junit allowEmptyResults: true, testResults: 'target/surefire-reports/*xml, api-test/target/surefire-reports/*.xml,functional-test/target/surefire-reports/*.xml, functional-test/target/failsafe-reports/8.xml'
         }
+        unsuccessful {
+            emailext attachLog: true, body: 'See the attached log below', subject: 'Build $BUILD_NUMBER has falied', to: 'vitor.santos.calado+jenkins@gmail.com'
+        }
+        fixed {
+            emailext attachLog: true, body: 'See the attached log below', subject: 'Build $BUILD_NUMBER has falied', to: 'vitor.santos.calado+jenkins@gmail.com'
+        }
     }
+
 }
