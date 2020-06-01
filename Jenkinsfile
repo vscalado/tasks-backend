@@ -23,7 +23,7 @@ pipeline{
         }
         stage('Quality Gate'){
             steps{
-                sleep(10)
+                sleep(20)
                 timeout(time: 1, unit: "MINUTES"){
                     waitForQualityGate abortPipeline: true
                 }
@@ -53,6 +53,7 @@ pipeline{
         }
         stage('Functional Tests') {
             steps{
+                sleep(5)
                 dir('functional-test') {
                     git credentialsId: 'loginGithub', url: 'https://github.com/vscalado/tasks-functional-tests'
                     bat 'mvn test'
