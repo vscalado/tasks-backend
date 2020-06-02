@@ -49,7 +49,7 @@ public class TaskController {
 	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
-		todoRepo.deleteById(id);;
+		todoRepo.deleteById(id);
 	}
 	
 	
